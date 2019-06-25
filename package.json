@@ -1,0 +1,19 @@
+{
+  "name": "pompiers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jquery": "^3.3.29",
+    "bulma": "^0.7.5",
+    "chart.js": "^2.8.0",
+    "jquery": "^3.4.1",
+    "leaflet": "^1.5.1"
+  }
+}
