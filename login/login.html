@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="../node_modules/bulma/css/bulma.min.css">
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns ">
+                    <div class="column has-text-centered">
+                        <div class="pin-login" id="mainPinLogin">
+                            <input type="password" readonly class="pin-login__text">
+                            <div class="pin-login__numpad">
+                                <!--<i class="pin-login__key material-icons">1</i>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="../js/pinlogin.js"></script>
+    <script>
+        new PinLogin({
+            el: document.getElementById("mainPinLogin"),
+            loginEndpoint: "login.php",
+            redirectTo: "../index.php",
+            maxNumbers: 6
+        })
+    </script>
+</body>
+
+</html>

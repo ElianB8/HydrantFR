@@ -1,5 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['success'])){
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +12,17 @@
     <title>Paramètres</title>
     <!-- BULMA -->
     <link rel="stylesheet" href="../node_modules/bulma/css/bulma.min.css">
+    <style>
+        html{
+            background-color: #e2e1e0;
+        }
+
+        .card-shadow {
+              box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        }
+    </style>
 </head>
+
 <body>
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -38,14 +53,40 @@
                     Paramètres
                 </a>
             </div>
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-
-                    </div>
-                </div>
-            </div>
         </div>
     </nav>
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div style="margin-top:25px;" class="card card-shadow">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            Général
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <h4 class="is-title is-4">Ville</h4>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="#" class="card-footer-item">Save</a>
+                        <a href="#" class="card-footer-item">Edit</a>
+                        <a href="#" class="card-footer-item">Delete</a>
+                    </footer>
+                </div>
+            </div>
+            <div class="column">
+
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
+<?php
+}
+else{
+    header('Location:../login/login.html');
+}
+?>

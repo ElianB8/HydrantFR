@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(isset($_SESSION['success'])){
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,6 +46,13 @@
                     Paramètres
                 </a>
             </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="navbar-item button is-danger" href="./login/deconnect.php">Deconnexion</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
     <!-- / NAVBAR -->
@@ -57,3 +68,9 @@
 </body>
 
 </html>
+<?php
+}
+else{
+    header('Location:./login/login.html');
+}
+?>

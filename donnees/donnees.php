@@ -1,4 +1,6 @@
 <?php
+session_start();
+if(isset($_SESSION['success'])){
 require_once("../database.php");
 $db = new Database('127.0.0.1','pompiers','root','');
 ?>
@@ -176,3 +178,9 @@ $db = new Database('127.0.0.1','pompiers','root','');
     </script>
 </body>
 </html>
+<?php
+}
+else{
+    header('Location:../login/login.html');
+}
+?>
