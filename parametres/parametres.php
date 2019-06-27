@@ -52,11 +52,11 @@ if(isset($_SESSION['success'])){
                 <a class="navbar-item">
                     Paramètres
                 </a>
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="navbar-item button is-danger" href="../login/deconnect.php">Deconnexion</a>
-                        </div>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="navbar-item button is-danger" href="../login/deconnect.php">Deconnexion</a>
                     </div>
                 </div>
             </div>
@@ -72,15 +72,32 @@ if(isset($_SESSION['success'])){
                         </p>
                     </header>
                     <div class="card-content">
-                        <div class="content">
-                            <h4 class="is-title is-4">Ville</h4>
-                        </div>
+                        <form>
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Mot de passe</label>
+                                        <div class="control">
+                                            <input class="input" type="password" name="param_passwd">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Confirmer Mot de passe</label>
+                                        <div class="control">
+                                            <input class="input" type="password" name="conf_param_passwd">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button is-success">Sauvegarder</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <footer class="card-footer">
-                        <a href="#" class="card-footer-item">Save</a>
-                        <a href="#" class="card-footer-item">Edit</a>
-                        <a href="#" class="card-footer-item">Delete</a>
-                    </footer>
                 </div>
             </div>
             <div class="column">
