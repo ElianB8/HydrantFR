@@ -1,5 +1,5 @@
 body {
-    background-color: #363636;
+    background-color: #e2e1e0;
     height: 100vh;
 }
 
@@ -8,7 +8,7 @@ body {
     border-radius: 3px;
     padding: 10px;
     font-size: 28px;
-    background: #243240;
+    background: #b3b3b3;
     user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -50,16 +50,20 @@ body {
 }
 
 .pin-login__key:hover {
-    background: #304255;
+    background: #e2e1e0;
     transform: scale(1.1)
 }
 
 .pin-login__key:active {
-    background: #304255;
+    background: #d4d4d4;
     transform: scale(0.9)
 }
 
 .pin-login__key--v:hover {
     background: #008516;
     transform: scale(1.1)
+}
+
+.card-shadow {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
