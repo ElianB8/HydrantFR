@@ -45,6 +45,13 @@ $db = new Database('127.0.0.1','pompiers','root','');
                     Paramètres
                 </a>
             </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="navbar-item button is-danger" href="../login/deconnect.php">Deconnexion</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
     <section class="section">

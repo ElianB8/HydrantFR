@@ -52,6 +52,13 @@ if(isset($_SESSION['success'])){
                 <a class="navbar-item">
                     Paramètres
                 </a>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="navbar-item button is-danger" href="../login/deconnect.php">Deconnexion</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
