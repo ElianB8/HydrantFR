@@ -42,6 +42,9 @@ $db = new Database('127.0.0.1','pompiers','root','');
                 <a class="navbar-item" href="../donnees/donnees.php">
                     Données
                 </a>
+                <a class="navbar-item" href="../parametres/parametres.php">
+                    Paramètres
+                </a>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">

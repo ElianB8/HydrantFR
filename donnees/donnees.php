@@ -39,6 +39,9 @@ $db = new Database('127.0.0.1','pompiers','root','');
                 <a class="navbar-item">
                     Données
                 </a>
+                <a class="navbar-item" href="../parametres/parametres.php">
+                    Paramètres
+                </a>
             </div>
         </div>
     </nav>
@@ -57,7 +60,7 @@ $db = new Database('127.0.0.1','pompiers','root','');
             <h1 class="title has-text-centered">Données poteaux incendies</h1>
             <div class="columns">
                 <div class="column">
-                    <table class="table is-fullwidth is-hoverable is-striped">
+                    <table class="table is-fullwidth is-hoverable is-striped ">
                         <thead>
                             <tr>
                                 <th>ID</th>
