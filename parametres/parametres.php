@@ -72,7 +72,7 @@ if(isset($_SESSION['success'])){
                         </p>
                     </header>
                     <div class="card-content">
-                        <form>
+                        <form method="POST" action="./parametres_controller.php">
                             <div class="columns">
                                 <div class="column">
                                     <div class="field">
