@@ -94,4 +94,23 @@ class Database{
         $req -> execute(array($id));
         return $req;
     }
+
+    public function verifyPassword($password){
+        $req = $this -> db -> prepare("SELECT passwd FROM password");
+        $req -> execute();
+        $data = $req -> fetch();
+        if(password_verify($password , $data['passwd'])){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function changePasswd($password){
+        $req= $this -> db -> prepare("UPDATE password SET passwd = ? WHERE id = 1 ");
+        $hash_password = password_hash($password , PASSWORD_BCRYPT);
+        $req -> execute(array($hash_password));
+        return $req;
+    }
 }

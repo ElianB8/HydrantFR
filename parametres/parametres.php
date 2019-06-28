@@ -76,7 +76,7 @@ if(isset($_SESSION['success'])){
                             <div class="columns">
                                 <div class="column">
                                     <div class="field">
-                                        <label class="label">Mot de passe</label>
+                                        <label class="label">Nouveau Code Pin</label>
                                         <div class="control">
                                             <input class="input" type="password" name="param_passwd">
                                         </div>
@@ -84,7 +84,7 @@ if(isset($_SESSION['success'])){
                                 </div>
                                 <div class="column">
                                     <div class="field">
-                                        <label class="label">Confirmer Mot de passe</label>
+                                        <label class="label">Confirmer Code Pin</label>
                                         <div class="control">
                                             <input class="input" type="password" name="conf_param_passwd">
                                         </div>
@@ -93,7 +93,7 @@ if(isset($_SESSION['success'])){
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <button class="button is-success">Sauvegarder</button>
+                                    <button type="submit" class="button is-success" name="save_param">Sauvegarder</button>
                                 </div>
                             </div>
                         </form>

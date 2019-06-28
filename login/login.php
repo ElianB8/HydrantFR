@@ -1,6 +1,8 @@
 <?php
 session_start();
-if($_POST["pincode"] === "230192"){
+require_once('../database.php');
+ $db = new Database('127.0.0.1','pompiers','root','');
+if($db -> verifyPassword($_POST["pincode"])){
     http_response_code(200);
     $_SESSION['success'] = "OK";
 }
