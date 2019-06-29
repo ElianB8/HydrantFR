@@ -44,9 +44,9 @@ class Database{
             echo("Poteaux supprimmé!");
     }
 
-        public function getPoteaux(){
-        $req = $this -> db -> query("SELECT * FROM poteau");
-        return $req;
+    public function getPoteaux($begin , $end){
+        $req_poteaux = $this -> db -> query('SELECT * FROM poteau LIMIT '.$begin.','.$end);
+        return $req_poteaux;
     }
 
     public function addDonnees($id_poteau , $debit , $date){
@@ -116,6 +116,12 @@ class Database{
 
     public function getTotalDonnees(){
         $req = $this -> db -> query("SELECT id FROM donees");
+        $reqCount = $req -> rowCount();
+        return $reqCount;
+    } 
+
+    public function getTotalpoteaux(){
+        $req = $this -> db -> query("SELECT id FROM poteau");
         $reqCount = $req -> rowCount();
         return $reqCount;
     } 
