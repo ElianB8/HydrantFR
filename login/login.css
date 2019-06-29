@@ -23,8 +23,7 @@ body {
     text-align: center;
     letter-spacing: 0.2em;
     border: none;
-    border-radius: 10px;
-    ;
+    border-radius: 5px;
     outline: none;
     cursor: default;
 }

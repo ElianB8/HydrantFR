@@ -78,7 +78,7 @@ if(isset($_SESSION['success'])){
                                     <div class="field">
                                         <label class="label">Nouveau Code Pin</label>
                                         <div class="control">
-                                            <input class="input" type="password" id="param_passwd" name="param_passwd">
+                                            <input class="input" type="password" id="param_passwd" name="param_passwd"  maxlength="6">
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@ if(isset($_SESSION['success'])){
                                     <div class="field">
                                         <label class="label">Confirmer Code Pin</label>
                                         <div class="control">
-                                            <input class="input" type="password" id="conf_param_passwd" name="conf_param_passwd">
+                                            <input class="input" type="password" id="conf_param_passwd" name="conf_param_passwd"  maxlength="6">
                                         </div>
                                     </div>
                                 </div>
