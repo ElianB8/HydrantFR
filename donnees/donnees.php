@@ -3,6 +3,21 @@ session_start();
 if(isset($_SESSION['success'])){
 require_once("../database.php");
 $db = new Database('127.0.0.1','pompiers','root','');
+
+$donneesbyPage = 15;
+$totalDonnees = $db ->  getTotalDonnees();
+$totalPages = ceil($totalDonnees/$donneesbyPage);
+
+if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $totalPages){
+    $_GET['page'] = intval($_GET['page']);
+    $currentPage = $_GET['page'];
+}
+else{
+    $currentPage = 1;
+}
+
+$begin = ($currentPage-1)* $donneesbyPage;
+
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +84,27 @@ $db = new Database('127.0.0.1','pompiers','root','');
             <h1 class="title has-text-centered">Données poteaux incendies</h1>
             <div class="columns">
                 <div class="column">
+                <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                    <ul class="pagination-list ">
+                        <?php
+                            for($i = 1;$i<=$totalPages;$i++){
+                                if($i == $currentPage){
+                        ?>
+                            <a class="pagination-link is-current""><?= $i ?></a>
+                        <?php
+                                }
+                                else{
+                        ?>
+                        <li>
+                            <a class="pagination-link" href="donnees.php?page=<?= $i ?>"><?= $i ?></a>
+                        </li>
+                        <?php
+                                }
+                            }
+                        ?>
+                    </ul>
+                </nav>
+
                     <table class="table is-fullwidth is-hoverable is-striped ">
                         <thead>
                             <tr>
@@ -80,7 +116,7 @@ $db = new Database('127.0.0.1','pompiers','root','');
                         </thead>
                         <tbody>
                             <?php 
-                                $req = $db -> getDonnees();
+                                $req = $db -> getDonnees($begin,$donneesbyPage);
                                 while($data = $req -> fetch()){
                             ?>
                                 <tr>

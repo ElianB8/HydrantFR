@@ -65,8 +65,8 @@ class Database{
         ));
     }
 
-    public function getDonnees(){
-        $req_donnees = $this -> db -> query("SELECT * FROM donees ORDER BY date ASC");
+    public function getDonnees($begin , $end){
+        $req_donnees = $this -> db -> query('SELECT * FROM donees ORDER BY date DESC LIMIT '.$begin.','.$end);
         return $req_donnees;
     }
 
@@ -84,7 +84,7 @@ class Database{
     }
 
     public function getUniqueDonnees($id_poteau){
-        $req = $this -> db -> prepare("SELECT * FROM donees  WHERE id_poteau = ? ORDER BY date ASC");
+        $req = $this -> db -> prepare("SELECT * FROM donees  WHERE id_poteau = ? ORDER BY date DESC");
         $req -> execute(array($id_poteau));
         return $req;
     }
@@ -113,4 +113,10 @@ class Database{
         $req -> execute(array($hash_password));
         return $req;
     }
+
+    public function getTotalDonnees(){
+        $req = $this -> db -> query("SELECT id FROM donees");
+        $reqCount = $req -> rowCount();
+        return $reqCount;
+    } 
 }
