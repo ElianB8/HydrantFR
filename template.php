@@ -53,6 +53,9 @@ else{
                 <a class="navbar-item" href="./donnees/donnees.php">
                     Données
                 </a>
+                <a class="navbar-item" href="./parametres/parametres.php">
+                    Paramètres
+                </a>
             </div>
         </div>
     </nav>
