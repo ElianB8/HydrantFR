@@ -1,10 +1,21 @@
 <?php
 session_start();
+    function dbExist(){
+    $connection = new mysqli("127.0.0.1","root","");
+    if(!$connection){
+        die ('Could not connect:' . mysql_error());
+    }
+    if($connection -> select_db('pompiers')){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 if(isset($_SESSION['success'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +27,9 @@ if(isset($_SESSION['success'])){
 </head>
 
 <body>
+    <?php
+        if(dbExist()){
+    ?>
     <!-- NAVBAR -->
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -32,6 +46,7 @@ if(isset($_SESSION['success'])){
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
+
             <div class="navbar-start">
                 <a class="navbar-item">
                     Accueil
@@ -46,6 +61,7 @@ if(isset($_SESSION['success'])){
                     Paramètres
                 </a>
             </div>
+
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
@@ -66,6 +82,12 @@ if(isset($_SESSION['success'])){
     <script src="./node_modules/leaflet/dist/leaflet.js"></script>
     <script src="./js/map.js" ></script>
 </body>
+        <?php
+            }
+            else{
+                    header('location:./install/install.php');
+            }
+        ?>
 
 </html>
 <?php
