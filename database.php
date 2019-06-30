@@ -125,4 +125,67 @@ class Database{
         $reqCount = $req -> rowCount();
         return $reqCount;
     } 
+
+    //INSTALLEUR
+
+    public function createTableDonnees(){
+        try {
+            $this -> db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "CREATE TABLE donees(
+                id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                id_poteau INT(11) UNSIGNED,
+                debit DOUBLE,
+                date DATE
+            )";
+            $this -> db -> exec($sql);
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function createTablePoteau(){
+        try {
+            $this -> db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "CREATE TABLE poteau(
+                id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                nom VARCHAR(255),
+                latitude DOUBLE,
+                longitude DOUBLE,
+                description TEXT,
+                adresse TEXT
+
+            )";
+
+            $this -> db -> exec($sql);
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function createTablePassword(){
+       try {
+            $this -> db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "CREATE TABLE password(
+                id INT(11),
+                passwd TEXT
+
+            )";
+
+            $this -> db -> exec($sql);
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function addPasswd($password){
+        $password = password_hash($password,PASSWORD_BCRYPT);
+        $req_donnees = $this -> db -> query("INSERT INTO password (id,passwd) VALUES('1','$password') ");
+        return true;
+    }
 }
