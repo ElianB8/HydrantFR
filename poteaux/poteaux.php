@@ -49,7 +49,7 @@ $begin = ($currentPage-1)* $poteauxbyPage;
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="../index.php">
+                <a class="navbar-item" href="../admin.php">
                     Accueil
                 </a>
                 <a class="navbar-item">
