@@ -157,7 +157,7 @@ $begin = ($currentPage-1)* $donneesbyPage;
                                 <div class="select" > 
                                     <select name="don_id">
                                         <?php
-                                            $req_pot = $db -> getPoteaux();
+                                            $req_pot = $db -> displayPoteaux();
                                             while($data_pot = $req_pot -> fetch()){
                                         ?>
                                             <option>[<?= $data_pot['id'] ?>] <?= $data_pot['nom'] ?></option>

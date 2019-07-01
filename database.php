@@ -49,6 +49,11 @@ class Database{
         return $req_poteaux;
     }
 
+    public function displayPoteaux(){
+        $req_poteaux = $this -> db -> query('SELECT * FROM poteau');
+        return $req_poteaux;
+    }
+
     public function addDonnees($id_poteau , $debit , $date){
     $req = $this-> db -> prepare("INSERT INTO donees(id_poteau ,debit,date) VALUES(:id_poteau ,:debit,:date)");
     $req -> execute(array(
