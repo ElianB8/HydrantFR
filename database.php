@@ -189,8 +189,13 @@ class Database{
     }
 
     public function addPasswd($password){
-        $password = password_hash($password,PASSWORD_BCRYPT);
-        $req_donnees = $this -> db -> query("INSERT INTO password (id,passwd) VALUES('1','$password') ");
-        return true;
+        if(is_numeric($password)){
+            $password = password_hash($password,PASSWORD_BCRYPT);
+            $req_donnees = $this -> db -> query("INSERT INTO password (id,passwd) VALUES('1','$password') ");
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
