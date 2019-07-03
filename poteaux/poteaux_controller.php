@@ -11,7 +11,7 @@ if(isset($_POST['add_saved'])){
         $pot_longitude = htmlspecialchars($_POST['pot_longitude']);
         $pot_adresse_noaccent = str_to_noaccent($pot_adresse);
         $pot_name_noaccent = str_to_noaccent($pot_name);
-        $db = new Database('127.0.0.1','pompiers','root','');
+        $db = new Database('../install/config.ini');
         $db -> addPoteaux($pot_name_noaccent , $pot_des,$pot_adresse_noaccent,$pot_latitude,$pot_longitude);
         header('Location:poteaux.php');
     }
@@ -20,7 +20,7 @@ if(isset($_POST['add_saved'])){
 if(isset($_POST['del_saved'])){
     if(!empty($_POST['pot_id'])){
         $pot_id = htmlspecialchars($_POST['pot_id']);
-        $db = new Database('127.0.0.1','pompiers','root','');
+        $db = new Database('../install/config.ini');
         $db -> deletePot($pot_id);
         header('Location:poteaux.php');
     }

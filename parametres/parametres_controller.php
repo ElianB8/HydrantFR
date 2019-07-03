@@ -6,7 +6,7 @@ if(isset($_POST['save_param'])){
         $param_passwd = htmlspecialchars($_POST['param_passwd']);
         $conf_param_passwd = htmlspecialchars($_POST['conf_param_passwd']);
         if(is_numeric($param_passwd) && is_numeric($conf_param_passwd)){
-            $db = new Database('127.0.0.1','pompiers','root','');
+            $db = new Database('../install/config.ini');
             if($param_passwd === $conf_param_passwd){
                 $db -> changePasswd($param_passwd);
                 header('Location:parametres.php');
