@@ -3,9 +3,17 @@
 //Création BDD
 function createDB($host,$username,$password){
     try {
-        $conn = new PDO("mysql:host=$password","$username","$password");
+        $conn = new PDO("mysql:host=$host","$username","$password");
         $sql = "CREATE DATABASE IF NOT EXISTS pompiers";
         $conn -> exec($sql);
+        $config_file = "config.ini";
+        $handle = fopen($config_file, 'w') or die('Cannot open file:  '.$config_file);
+        $file_data = "[database]
+servername = $host 
+username = $username 
+password = ".password_hash($password)." 
+dbname= pompiers";
+        fwrite($handle, $file_data);
         return true;
     } catch (Exception $e) {
         die('Erreur : '.$e->getMessage());
@@ -105,19 +113,19 @@ if(isset($_POST['install'])){
                 <br>
                 <h5 class="title is-5 has-text-success">
                     <?php 
-                if(isset($msg)){
-                    echo $msg;
-                }
-            ?>
-                </h5>
-                <h5 class="title is-5 has-text-danger">
+                        if(isset($msg)){
+                            echo $msg;
+                        }
+                    ?>
+                        </h5>
+                        <h5 class="title is-5 has-text-danger">
                     <?php 
-                if(isset($errors)){
-                    foreach($errors as $error){
-                        echo $errors[0];
-                    }
-                } 
-            ?>
+                        if(isset($errors)){
+                            foreach($errors as $error){
+                                echo $errors[0];
+                            }
+                        } 
+                    ?>
                 </h5>
 
             </div>
