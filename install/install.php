@@ -11,7 +11,7 @@ function createDB($host,$username,$password){
         $file_data = "[database]
 servername = $host 
 username = $username 
-password = ".password_hash($password)." 
+password = $password 
 dbname= pompiers";
         fwrite($handle, $file_data);
         return true;
@@ -31,7 +31,7 @@ if(isset($_POST['install'])){
         $username = htmlspecialchars($_POST['username']);
         $password = htmlspecialchars($_POST['password']);
         if(createDB($hote,$username,$password)){
-            $db = new Database($hote,'pompiers',$username,$password);
+            $db = new Database("./config.ini");
             if($db -> createTablePassword() && $db -> createTableDonnees() && $db -> createTablePoteau() ){
                 $db -> addPasswd($codepin);
                 $msg = "Création table réussie !";

@@ -9,18 +9,28 @@ class Database{
       protected $db;
 
       //Constructor
-      public function __construct($_host , $_dbname , $_user , $_password){
-            $this -> host = $_host;
-            $this -> dbname = $_dbname;
-            $this -> user = $_user;
-            $this -> password = $_password;
+      public function __construct($path){
+            static $connection;
+                if(!isset($connection)) {
+                    $config = parse_ini_file($path); 
+                    
+                    $this -> host = $config['servername'];
+                    $this -> dbname = "pompiers";
+                    $this -> user = $config['username'];
+                    $this -> password = $config['password'];
 
-            try{
-                  $this -> db = new PDO('mysql:host='.$this -> host.';dbname='.$this -> dbname.';charset=utf8', ''.$this -> user.'', ''.$this ->password.'');
-            }
-            catch(Exception $e){
-                  die('Erreur : '.$e->getMessage());
-            }
+                    try{
+                        $this -> db = new PDO('mysql:host='.$this -> host.';dbname='.$this -> dbname.';charset=utf8', ''.$this -> user.'', ''.$this ->password.'');
+                    }
+                    catch(Exception $e){
+                        die('Erreur : '.$e->getMessage());
+                    }
+                }
+                    if($connection === false) {
+                        return false; 
+                    }
+
+
       }
 
       //POTEAUX INCENDIES

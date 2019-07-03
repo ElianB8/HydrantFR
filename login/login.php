@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../database.php');
- $db = new Database('127.0.0.1','pompiers','root','');
+ $db = new Database("../install/config.ini");
 if($db -> verifyPassword($_POST["pincode"])){
     http_response_code(200);
     $_SESSION['success'] = "OK";
