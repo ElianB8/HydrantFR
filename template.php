@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['success'])){
 require_once("database.php");
-$db = new Database('../install/config.ini');
+$db = new Database('./install/config.ini');
 if(isset($_GET['id'])){
     if(!$db -> validGetId($_GET['id'])){
         $req = $db -> getUniquePoteau($_GET['id']);
