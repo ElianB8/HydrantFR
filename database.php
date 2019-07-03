@@ -208,4 +208,20 @@ class Database{
             return false;
         }
     }
+
+    public function mapPoteau(){
+        $mysqli = new mysqli($this -> host,$this -> user,$this -> password, $this -> dbname);
+        if(!$mysqli){
+            die("Connection failed: " . $mysqli->error);
+        }
+        $query =  $mysqli ->prepare("SELECT * FROM poteau");
+        $query -> execute();
+        $result = $query-> get_result();
+        while($row = $result -> fetch_assoc()){
+            $data[] = $row;
+        }
+        $result->close();
+        $mysqli->close();
+        echo json_encode($data);
+    }
 }
