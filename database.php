@@ -227,19 +227,19 @@ class Database{
 
     public function chartJSON($id_poteau){
             
-    $mysqli = new mysqli($this -> host,$this -> user,$this -> password, $this -> dbname);
-    if(!$mysqli){
-        die("Connection failed: " . $mysqli->error);
-    }
-    $query =  $mysqli -> prepare("SELECT debit , date FROM donees WHERE id_poteau = ? ORDER BY date ASC");
-    $query -> bind_param("i",$id_poteau);
-    $query -> execute();
-    $result = $query-> get_result();
-    while($row = $result -> fetch_assoc()){
-        $data[] = $row;
-    }
-    $result->close();
-    $mysqli->close();
-    print json_encode($data);
+        $mysqli = new mysqli($this -> host,$this -> user,$this -> password, $this -> dbname);
+        if(!$mysqli){
+            die("Connection failed: " . $mysqli->error);
+        }
+        $query =  $mysqli -> prepare("SELECT debit , date FROM donees WHERE id_poteau = ? ORDER BY date ASC");
+        $query -> bind_param("i",$id_poteau);
+        $query -> execute();
+        $result = $query-> get_result();
+        while($row = $result -> fetch_assoc()){
+            $data[] = $row;
+        }
+        $result->close();
+        $mysqli->close();
+        print json_encode($data);
     }
 }

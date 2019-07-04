@@ -20,7 +20,7 @@ function getInfo() {
         $.each(data, function (key, place) {
             var marker = L.marker([place.latitude, place.longitude])
                 .addTo(macarte)
-                .bindPopup(`<a href="template.php?id=${place.id}"><h5> ${place.nom} </h5></a>
+                .bindPopup(`<a href="display.php?id=${place.id}"><h5> ${place.nom} </h5></a>
                         <h6>Description: ${place.description}</h6>
                         <h6>Adresse : ${place.adresse}</h6>
                         <p>Latitude : ${place.latitude}</p>
