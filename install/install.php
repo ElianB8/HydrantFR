@@ -1,26 +1,21 @@
 <?php
-
-//Création BDD
-function createDB($host,$username,$password){
-    try {
-        $conn = new PDO("mysql:host=$host","$username","$password");
-        $sql = "CREATE DATABASE IF NOT EXISTS pompiers";
-        $conn -> exec($sql);
+function createconfig($host,$username,$password,$dbname){
+    try{
         $config_file = "config.ini";
         $handle = fopen($config_file, 'w') or die('Cannot open file:  '.$config_file);
         $file_data = "[database]
 servername = $host 
 username = $username 
 password = $password 
-dbname= pompiers";
+dbname= $dbname";
         fwrite($handle, $file_data);
         return true;
-    } catch (Exception $e) {
+    }
+    catch (Exception $e) {
         die('Erreur : '.$e->getMessage());
         return false;
     }
 }
-
 
 require_once('../database.php');
 if(isset($_POST['install'])){
@@ -30,16 +25,15 @@ if(isset($_POST['install'])){
         $hote = htmlspecialchars($_POST['hote']);
         $username = htmlspecialchars($_POST['username']);
         $password = htmlspecialchars($_POST['password']);
-        if(createDB($hote,$username,$password)){
+        $dbname = htmlspecialchars($_POST['dbname']);
+        if(createconfig($hote,$username,$password,$dbname)){
             $db = new Database("./config.ini");
             if($db -> createTablePassword() && $db -> createTableDonnees() && $db -> createTablePoteau() ){
                 $db -> addPasswd($codepin);
                 $msg = "Création table réussie !";
                 header('Location:../admin.php');   
             }
-            else{
-                $errors = array($db -> createTableDonnees() , $db -> createTablePoteau()) ;
-            }
+        }
         }
         else{
             echo "Erreur création base de données!";
@@ -49,7 +43,6 @@ if(isset($_POST['install'])){
     else{
         echo "Champ vide";
     }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,6 +81,12 @@ if(isset($_POST['install'])){
                                 <label class="label">Mot de passse</label>
                                 <div class="control">
                                     <input class="input" type="password" name="password">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Nom base de données</label>
+                                <div class="control">
+                                    <input class="input" type="text" name="dbname">
                                 </div>
                             </div>
                         </div>

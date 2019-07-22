@@ -1,17 +1,23 @@
 <?php
 session_start();
-    function dbExist(){
-    $connection = new mysqli("127.0.0.1","root","");
-    if(!$connection){
-        die ('Could not connect:' . mysql_error());
+    function dbExist($path){
+        static $connection;
+        $config = parse_ini_file($path);
+        $host = $config['servername'];
+        $dbname = $config['dbname'];
+        $user = $config['username'];
+        $password = $config['password'];
+        $connection = new mysqli($host,$user,$password);
+        if(!$connection){
+            die ('Could not connect:' . mysql_error());
+        }
+        if($connection -> select_db($dbname)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
-    if($connection -> select_db('pompiers')){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
 if(isset($_SESSION['success'])){
 ?>
 <!DOCTYPE html>
@@ -28,7 +34,7 @@ if(isset($_SESSION['success'])){
 
 <body>
     <?php
-        if(dbExist()){
+        if(dbExist('./install/config.ini')){
     ?>
     <!-- NAVBAR -->
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">

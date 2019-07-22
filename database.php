@@ -15,7 +15,7 @@ class Database{
                     $config = parse_ini_file($path); 
                     
                     $this -> host = $config['servername'];
-                    $this -> dbname = "pompiers";
+                    $this -> dbname = $config['dbname'];
                     $this -> user = $config['username'];
                     $this -> password = $config['password'];
 
