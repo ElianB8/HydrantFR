@@ -18,7 +18,6 @@ function initMap() {
 function getInfo() {
     $.getJSON('../map.php', function (data) {
         $.each(data, function (key, place) {
-            console.log(place.latitude, place.longitude);
             var marker = L.marker([place.latitude, place.longitude])
                 .addTo(macarte)
                 .bindPopup(`<a href="display.php?id=${place.id}"><h5> ${place.nom} </h5></a>

@@ -199,6 +199,7 @@ $begin = ($currentPage-1)* $donneesbyPage;
             </div>
         </div>
     </section>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script>
         var refs = {
             addModal: {
@@ -218,6 +219,19 @@ $begin = ($currentPage-1)* $donneesbyPage;
                 }
             }
         };
+    </script>
+    <script>
+        $(document).ready(function() {
+
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").click(function() {
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+
+        });
+        });
     </script>
 </body>
 </html>

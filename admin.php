@@ -87,6 +87,19 @@ if(isset($_SESSION['success'])){
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/leaflet/dist/leaflet.js"></script>
     <script src="./js/map.js" ></script>
+    <script>
+        $(document).ready(function() {
+
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").click(function() {
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+
+        });
+        });
+    </script>
 </body>
         <?php
             }
