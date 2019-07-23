@@ -5,8 +5,9 @@ function initMap() {
     let lat = 42.740536;
     let lon = 2.9157895;
     let zoomMax : number = 20;
-    let zoomMin : number = 10
-    macarte = L.map('map').setView([lat, lon], 11);
+    let zoomMin : number = 9;
+    let defaultZoom : number = 9;
+    macarte = L.map('map').setView([lat, lon], defaultZoom);
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
         attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
         minZoom: zoomMin,
@@ -16,7 +17,7 @@ function initMap() {
 }
 
 function getInfo() {
-    $.getJSON('../map.php', function (data) {
+    $.getJSON('./map.php', function (data) {
         $.each(data, function (key, place) {
             var marker = L.marker([place.latitude, place.longitude])
                 .addTo(macarte)

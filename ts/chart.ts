@@ -1,7 +1,8 @@
 $(document).ready(function () {
     let id = $_GET('id');
+    let url = window.location.pathname+ "/../chart_data.php?id=" + id;
     $.ajax({
-        url: "http://localhost/pompiers/chart_data.php?id=" + id,
+        url: url,
         type: "GET",
         success: function (data) {
             var debit = [];

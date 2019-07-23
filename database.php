@@ -43,7 +43,7 @@ class Database{
                 'latitude' => $latitude,
                 'longitude' => $longitude
             ));
-            echo("Poteaux enregistré!");
+            
     }
 
         public function deletePot($id){

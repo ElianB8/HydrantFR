@@ -74,7 +74,7 @@ else{
                         <th>ID</th>
                         <th>ID poteaux incendies</th>
                         <th>Date</th>
-                        <th>Chlore libre</th>
+                        <th>Débit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -103,7 +103,7 @@ else{
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/chart.js/dist/Chart.min.js"></script>
     <script src="./js/chart.js"></script>
-        <script>
+    <script>
         $(document).ready(function() {
 
         // Check for click events on the navbar burger icon
