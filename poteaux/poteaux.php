@@ -2,6 +2,8 @@
 session_start();
 if(isset($_SESSION['success'])){
 require_once("../database.php");
+require_once("../vendor/mobiledetect/mobiledetectlib/Mobile_Detect.php");
+$detect = new Mobile_Detect();
 $db = new Database('../install/config.ini');
 
 $poteauxbyPage = 10;
@@ -161,9 +163,15 @@ $begin = ($currentPage-1)* $poteauxbyPage;
                                         <input class="input" type="text" name="pot_adresse" id="pot_adresse" required>
                                     </div>
                                 </div>
-                                   <div class="column">
-                                        <a onclick="getLocation()" class="button is-info">Me Localiser</a>
-                                   </div> 
+                                <?php
+                                    if ($detect->isMobile()){
+                                ?>
+                                <div class="column">
+                                    <a onclick="getLocation()" class="button is-info">Me Localiser</a>
+                                </div> 
+                                <?php
+                                    }
+                                ?>
                             </div>
                             <div class="columns">
                                 <div class="column">

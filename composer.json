@@ -1,0 +1,12 @@
+{
+    "name": "elian/hydrant",
+    "authors": [
+        {
+            "name": "ShawColat",
+            "email": "elian.bourdil@outlook.com"
+        }
+    ],
+    "require": {
+        "mobiledetect/mobiledetectlib": "^2.8"
+    }
+}
