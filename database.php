@@ -51,7 +51,6 @@ class Database{
             $req -> execute(array(
                 'id' => $id
             ));
-            echo("Poteaux supprimmé!");
     }
 
     public function getPoteaux($begin , $end){

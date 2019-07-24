@@ -148,27 +148,34 @@ $begin = ($currentPage-1)* $poteauxbyPage;
                         <div class="field">
                             <label class="label">Nom</label>
                             <div class="control">
-                                <input class="input" type="text" name="pot_name">
+                                <input class="input" type="text" name="pot_name" required>
                             </div>
                             <label class="label">Description</label>
                             <div class="control">
-                                <input class="input" type="text" name="pot_description">
+                                <input class="input" type="text" name="pot_description" required>
                             </div>
                             <label class="label">Adresse</label>
-                            <div class="control">
-                                <input class="input" type="text" name="pot_adresse" id="pot_adresse">
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="control">
+                                        <input class="input" type="text" name="pot_adresse" id="pot_adresse" required>
+                                    </div>
+                                </div>
+                                   <div class="column">
+                                        <a onclick="getLocation()" class="button is-info">Me Localiser</a>
+                                   </div> 
                             </div>
                             <div class="columns">
                                 <div class="column">
                                     <label class="label">Latitude</label>
                                     <div class="control">
-                                        <input class="input" type="text" name="pot_latitude" id="pot_latitude" readonly>
+                                        <input class="input" type="text" name="pot_latitude" id="pot_latitude" readonly required>
                                     </div>
                                 </div>
                                 <div class="column">
                                     <label class="label">Longitude</label>
                                     <div class="control">
-                                        <input class="input" type="text" name="pot_longitude" id="pot_longitude" readonly>
+                                        <input class="input" type="text" name="pot_longitude" id="pot_longitude" readonly required>
                                     </div>
                                 </div>
                             </div>
@@ -238,6 +245,24 @@ $begin = ($currentPage-1)* $poteauxbyPage;
 
         });
         });
+    </script>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                alert("La géolocalisation n'est pas supporté par votre navigateur.");
+            }
+        }
+
+        function showPosition(position) {
+            let pot_latitude = document.getElementById("pot_latitude");
+            let pot_longitude = document.getElementById("pot_longitude");
+            let pot_adresse = document.getElementById("pot_adresse");
+            pot_latitude.value = position.coords.latitude;
+            pot_longitude.value = position.coords.longitude;
+            pot_adresse.value = "Adresse approximative ";
+        }
     </script>
 </body>
 

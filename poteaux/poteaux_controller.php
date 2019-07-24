@@ -15,6 +15,9 @@ if(isset($_POST['add_saved'])){
         $db -> addPoteaux($pot_name_noaccent , $pot_des,$pot_adresse_noaccent,$pot_latitude,$pot_longitude);
         header('Location:poteaux.php');
     }
+    else{
+        echo "Erreurs les champs requis sont vide";
+    }
 }
 
 if(isset($_POST['del_saved'])){
